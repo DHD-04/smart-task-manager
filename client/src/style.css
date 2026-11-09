@@ -8,7 +8,7 @@ body { margin: 0 }
 #root { min-height: 100vh; display: flex; flex-direction: column }
 nav { background: white; border-bottom: 1px solid #dbe2ea }
 .nav-inner, main, footer { width: min(1120px, 90%); margin-inline: auto }
-.nav-inner, .brand, .links, .links a, .button, footer, footer a, .paper-head, .paper-row { display: flex; align-items: center }
+.nav-inner, .brand, .links, .links a, .button, footer, footer a { display: flex; align-items: center }
 .nav-inner, footer { justify-content: space-between }
 .nav-inner { min-height: 72px; gap: 20px }
 .brand { gap: 10px; font-weight: 720; letter-spacing: -.035em }
@@ -26,14 +26,7 @@ h1 span { color: #3d85c6 }
 .button { width: fit-content; gap: 12px; padding: 12px 17px; border-radius: 8px; background: #101d35; color: white; font-weight: 600; font-size: .9rem }
 .button:hover { background: #264568 }
 .button:disabled { opacity: .65 }
-.drawing { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 1.48; background-color: #dcecf8; background-image: radial-gradient(#9fbcd1 .9px, transparent .9px); background-size: 13px 13px; border-radius: 20px; overflow: hidden }
-.paper { grid-area: 1/1; width: 64%; padding: clamp(14px,2vw,27px); background: white; border: 1px solid #b1c5d6; border-radius: 14px; box-shadow: 0 9px 20px #20385714; transform: rotate(-5deg) }
-.back { position: absolute; height: 66%; background: #9bbcd9; transform: rotate(8deg) translate(4%,0); z-index: -1 }
-.paper-head { gap: 9px; font-weight: 700; font-size: .96rem; margin-bottom: 16px }
-.paper-row { gap: 9px; padding: 8px; border: 1px solid #dae1eb; border-radius: 6px; margin-top: 7px; font-size: .77rem }
-.paper-row svg { width: 15px; height: 15px }
-.r1 { background: #e4effb; color: #285d8a }
-.r2 { color: #35695e }
+.hero-art { display: block; width: 100%; height: auto; object-fit: contain }
 #workflow { border-top: 1px solid #d9e1e9; padding: 32px 0 45px }
 h2 { font-weight: 650; font-size: clamp(1.7rem,3vw,2.35rem); letter-spacing: -.05em }
 .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(220px,100%),1fr)); gap: 16px; margin-top: 22px }
@@ -51,8 +44,6 @@ footer a { gap: 4px }
 @media (max-width: 680px) {
   .nav-inner { flex-wrap: wrap; padding: 12px 0; gap: 8px }
   .hero { grid-template-columns: 1fr; gap: 28px }
-  .drawing { max-height: 275px; width: 100% }
-  .paper { max-width: 250px }
   .links a { padding: 7px 8px }
   .wide { display: none }
 }

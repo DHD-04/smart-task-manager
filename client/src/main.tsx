@@ -1,24 +1,21 @@
 import { StrictMode, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
-import { Activity, ArrowDownRight, ArrowUpRight, Check, Circle, CircleDot, Columns3, Database, FolderOpen, Layers3, LayoutGrid, ListChecks, RefreshCw, Server } from 'lucide-react'
+import { Activity, ArrowDownRight, ArrowUpRight, KanbanSquare, Database, FolderOpen, Layers3, LayoutGrid, ListChecks, RefreshCw, Server } from 'lucide-react'
 import './style.css'
 
 const repo = 'https://github.com/DHD-04/smart-task-manager'
 const workflow = [
   { icon: ListChecks, title: 'Capture tasks', text: 'Give each task a clear outcome, priority and due date.' },
   { icon: FolderOpen, title: 'Organize projects', text: 'Group related tasks so each project has a home.' },
-  { icon: Columns3, title: 'Track progress', text: 'Move work from To Do to In Progress to Done.' }
+  { icon: KanbanSquare, title: 'Track progress', text: 'Move work from To Do to In Progress to Done.' }
 ]
 
 function Overview() {
   return <><header className="hero"><div><p className="eyebrow text-left">Workspace guide</p><h1>Smart Task<br/>Manager<span>.</span></h1>
     <p className="intro">A personal workspace for tasks, projects<br className="wide"/> and the work ahead.</p>
     <a className="button" href="#workflow">Explore the workflow <ArrowDownRight size={17}/></a></div>
-    <div className="drawing" role="img" aria-label="Workflow illustration showing a task moving through three stages">
-      <div className="paper back"></div><div className="paper"><div className="paper-head"><Layers3 size={19}/> Task workflow</div>
-      {['To Do','In Progress','Done'].map((label,i) => <div className={'paper-row r'+i} key={label}>{i===0?<Circle/>:i===1?<CircleDot/>:<Check/>}<b>{label}</b><span/></div>)}</div>
-    </div></header>
+    <img className="hero-art" src="/images/landing/workspace.webp" width="960" height="640" fetchPriority="high" alt="Illustrated workspace with a Kanban board, calendar and progress chart." /></header>
     <section id="workflow"><p className="eyebrow text-left">How it works</p><h2>From idea to done</h2>
     <div className="cards">{workflow.map(({icon:Icon,title,text})=><article key={title}><Icon size={25}/><h3>{title}</h3><p>{text}</p></article>)}</div></section></>
 }
