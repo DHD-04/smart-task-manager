@@ -8,6 +8,6 @@ Verification: both TypeScript projects and the production frontend built. All fi
 
 Known limits: local database verification used MariaDB. Production MySQL and hosting are scheduled for Day 7. Day 2 introduces accounts and protected routes.
 
-Milestone commit and remote verification: pending first push.
+Verified milestone commit on GitHub main: [9c2eb784eeded39ee1df6ff37e4e875bd4164743](https://github.com/DHD-04/smart-task-manager/commit/9c2eb784eeded39ee1df6ff37e4e875bd4164743). Day 1 complete.
 
 Next milestone: Day 2, authentication.
