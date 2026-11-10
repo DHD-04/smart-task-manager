@@ -47,3 +47,12 @@ footer a { gap: 4px }
   .links a { padding: 7px 8px }
   .wide { display: none }
 }
+.auth-layout { display:grid; grid-template-columns: minmax(0,420px) minmax(0,1fr); align-items:center; gap:8%; padding:60px 0 }
+.auth-layout form { display:grid; gap:18px }
+.auth-layout h1 { font-size:clamp(2.5rem,5vw,4rem); margin-bottom:8px }
+.auth-layout label { display:grid; gap:6px; font-weight:600 }
+.auth-layout input { border:1px solid #899aae; border-radius:8px; padding:10px 12px; background:white }
+.auth-layout small { font-weight:400 }
+.auth-layout a { text-decoration:underline }
+.auth-layout img { width:100%; height:auto }
+@media(max-width:680px) { .auth-layout { grid-template-columns:1fr } .auth-layout img { display:none } .links { flex-wrap:wrap } }

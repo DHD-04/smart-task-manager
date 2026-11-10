@@ -14,6 +14,7 @@ model User {
   passwordHash String   @db.VarChar(255)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  sessions     Session[]
   projects     Project[]
   tasks        Task[]
 }
@@ -61,4 +62,14 @@ model Task {
 
   @@index([projectId, userId])
   @@index([userId, status, dueDate])
+}
+
+model Session {
+  digest    String   @id @db.Char(64)
+  userId    Int
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
 }

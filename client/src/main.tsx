@@ -2,6 +2,7 @@ import { StrictMode, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
 import { Activity, ArrowDownRight, ArrowUpRight, KanbanSquare, Database, FolderOpen, Layers3, LayoutGrid, ListChecks, RefreshCw, Server } from 'lucide-react'
+import { AuthForm, Workspace } from './Auth'
 import './style.css'
 
 const repo = 'https://github.com/DHD-04/smart-task-manager'
@@ -14,7 +15,7 @@ const workflow = [
 function Overview() {
   return <><header className="hero"><div><p className="eyebrow text-left">Workspace guide</p><h1>Smart Task<br/>Manager<span>.</span></h1>
     <p className="intro">A personal workspace for tasks, projects<br className="wide"/> and the work ahead.</p>
-    <a className="button" href="#workflow">Explore the workflow <ArrowDownRight size={17}/></a></div>
+    <Link className="button" to="/register">Create an account <ArrowDownRight size={17}/></Link></div>
     <img className="hero-art" src="/images/landing/workspace.webp" width="960" height="640" fetchPriority="high" alt="Illustrated workspace with a Kanban board, calendar and progress chart." /></header>
     <section id="workflow"><p className="eyebrow text-left">How it works</p><h2>From idea to done</h2>
     <div className="cards">{workflow.map(({icon:Icon,title,text})=><article key={title}><Icon size={25}/><h3>{title}</h3><p>{text}</p></article>)}</div></section></>
@@ -43,8 +44,8 @@ function System() {
 
 function App() {
   return <><a className="skip" href="#main">Skip to content</a><nav><div className="nav-inner"><Link to="/" className="brand"><span className="mark"><Layers3 size={23}/></span>Smart Task Manager</Link>
-    <div className="links"><NavLink to="/" end><LayoutGrid size={16}/>Overview</NavLink><NavLink to="/status"><Activity size={16}/>System status</NavLink></div></div></nav>
-    <main id="main"><Routes><Route path="/" element={<Overview/>}/><Route path="/status" element={<System/>}/><Route path="*" element={<section className="system"><h1>Page not found</h1><Link className="button" to="/">Return to overview</Link></section>}/></Routes></main>
+    <div className="links"><NavLink to="/" end><LayoutGrid size={16}/>Overview</NavLink><NavLink to="/status"><Activity size={16}/>System status</NavLink><NavLink to="/workspace">My workspace</NavLink></div></div></nav>
+    <main id="main"><Routes><Route path="/" element={<Overview/>}/><Route path="/status" element={<System/>}/><Route path="/login" element={<AuthForm key="login"/>}/><Route path="/register" element={<AuthForm key="register" register/>}/><Route path="/workspace" element={<Workspace/>}/><Route path="*" element={<section className="system"><h1>Page not found</h1><Link className="button" to="/">Return to overview</Link></section>}/></Routes></main>
     <footer><span>Built by <strong>DHD</strong></span><a href={repo}>Source on GitHub <ArrowUpRight size={14}/></a></footer></>
 }
 createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App/></BrowserRouter></StrictMode>)
