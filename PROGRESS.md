@@ -11,3 +11,9 @@ Known limits: local database verification used MariaDB. Production MySQL and hos
 Verified milestone commit on GitHub main: [9c2eb784eeded39ee1df6ff37e4e875bd4164743](https://github.com/DHD-04/smart-task-manager/commit/9c2eb784eeded39ee1df6ff37e4e875bd4164743). Day 1 complete.
 
 Next milestone: Day 2, authentication.
+
+## Day 2 · 2026-11-10 · Authentication
+
+Registration, sign-in, sign-out, protected workspace and per-user database sessions implemented. Verified scrypt hashing, input rejection, two-account isolation, cross-site rejection and session revocation with local MariaDB. All six tests passed with AUTH_DB_TEST=1. Production build passed. Local registration page returned 200 and anonymous session lookup returned 401.
+
+Verified milestone commit: 1b8e7ebd4118de6e479ec8a2f677293dc59bc9c1. Next milestone: Day 3, task and project management. Production HTTPS cookie behavior awaits deployment.
