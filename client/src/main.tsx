@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Link, NavLink, Route, Routes } from 'react-router-dom'
 import { Activity, ArrowDownRight, ArrowUpRight, KanbanSquare, Database, FolderOpen, Layers3, LayoutGrid, ListChecks, RefreshCw, Server } from 'lucide-react'
 import { AuthForm, Workspace } from './Auth'
+import { WorkPage } from './Work'
 import './style.css'
 
 const repo = 'https://github.com/DHD-04/smart-task-manager'
@@ -45,7 +46,7 @@ function System() {
 function App() {
   return <><a className="skip" href="#main">Skip to content</a><nav><div className="nav-inner"><Link to="/" className="brand"><span className="mark"><Layers3 size={23}/></span>Smart Task Manager</Link>
     <div className="links"><NavLink to="/" end><LayoutGrid size={16}/>Overview</NavLink><NavLink to="/status"><Activity size={16}/>System status</NavLink><NavLink to="/workspace">My workspace</NavLink></div></div></nav>
-    <main id="main"><Routes><Route path="/" element={<Overview/>}/><Route path="/status" element={<System/>}/><Route path="/login" element={<AuthForm key="login"/>}/><Route path="/register" element={<AuthForm key="register" register/>}/><Route path="/workspace" element={<Workspace/>}/><Route path="*" element={<section className="system"><h1>Page not found</h1><Link className="button" to="/">Return to overview</Link></section>}/></Routes></main>
+    <main id="main"><Routes><Route path="/" element={<Overview/>}/><Route path="/status" element={<System/>}/><Route path="/login" element={<AuthForm key="login"/>}/><Route path="/register" element={<AuthForm key="register" register/>}/><Route path="/workspace" element={<Workspace/>}/><Route path="/tasks" element={<WorkPage/>}/><Route path="/tasks/new" element={<WorkPage/>}/><Route path="/tasks/:id" element={<WorkPage/>}/><Route path="/projects" element={<WorkPage project/>}/><Route path="/projects/new" element={<WorkPage project/>}/><Route path="/projects/:id" element={<WorkPage project/>}/><Route path="*" element={<section className="system"><h1>Page not found</h1><Link className="button" to="/">Return to overview</Link></section>}/></Routes></main>
     <footer><span>Built by <strong>DHD</strong></span><a href={repo}>Source on GitHub <ArrowUpRight size={14}/></a></footer></>
 }
 createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App/></BrowserRouter></StrictMode>)

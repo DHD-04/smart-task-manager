@@ -51,5 +51,5 @@ export function Workspace() {
       navigate('/login', {replace:true})
     } catch { setError('Sign out failed. Please try again.') }
   }
-  return <section className="system"><p className="eyebrow">Your workspace</p>{user ? <><h1>Welcome, {user.name}</h1><p>{user.email}</p><button className="button" onClick={logout}>Sign out</button></> : !error && <p>Loading account…</p>}{error && <p role="alert">{error}</p>}</section>
+  return <section className="system"><p className="eyebrow">Your workspace</p>{user ? <><h1>Welcome, {user.name}</h1><p>{user.email}</p><div className="work-nav"><Link to="/tasks">My tasks</Link><Link to="/projects">Projects</Link></div><button className="button" onClick={logout}>Sign out</button></> : !error && <p>Loading account…</p>}{error && <p role="alert">{error}</p>}</section>
 }

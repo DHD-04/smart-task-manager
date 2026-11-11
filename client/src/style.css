@@ -56,3 +56,13 @@ footer a { gap: 4px }
 .auth-layout a { text-decoration:underline }
 .auth-layout img { width:100%; height:auto }
 @media(max-width:680px) { .auth-layout { grid-template-columns:1fr } .auth-layout img { display:none } .links { flex-wrap:wrap } }
+.work { padding:48px 0; overflow-wrap:anywhere }
+.work h1 { font-size:clamp(2.4rem,5vw,4rem); margin:18px 0 24px }
+.work form { display:grid; gap:14px; max-width:640px }
+.work label { display:grid; gap:5px; font-weight:600 }
+.work input,.work textarea,.work select { padding:9px 12px; border:1px solid #899aae; border-radius:7px; background:white; width:100% }
+.work-nav { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin:16px 0 }
+.work-nav a,.work article a { color:#235b89; text-decoration:underline }
+.work-nav a { display:inline-flex; align-items:center; gap:6px }
+.work-empty { padding:28px 0; display:grid; justify-items:center; gap:12px }
+.work [role=alert] { margin:12px 0; color:#962f2f }

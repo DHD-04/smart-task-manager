@@ -19,3 +19,6 @@ api.post('/auth/register', authenticate(true))
 api.post('/auth/login', authenticate(false))
 api.post('/auth/logout', logout)
 api.get('/auth/me', requireSession, (_req, res) => { res.json(res.locals.user) })
+import { workRouter } from '../controllers/work.js'
+api.use('/tasks', workRouter(false))
+api.use('/projects', workRouter(true))
