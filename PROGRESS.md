@@ -17,3 +17,11 @@ Next milestone: Day 2, authentication.
 Registration, sign-in, sign-out, protected workspace and per-user database sessions implemented. Verified scrypt hashing, input rejection, two-account isolation, cross-site rejection and session revocation with local MariaDB. All six tests passed with AUTH_DB_TEST=1. Production build passed. Local registration page returned 200 and anonymous session lookup returned 401.
 
 Verified milestone commit: 1b8e7ebd4118de6e479ec8a2f677293dc59bc9c1. Next milestone: Day 3, task and project management. Production HTTPS cookie behavior awaits deployment.
+
+## Day 3 · 2026-11-11 · Task and project management
+
+Added protected task and project lists, details, editable forms, deadlines, priority, status, project assignment and deletion confirmation. Database constraints require detaching tasks before deleting their project.
+
+All seven tests passed with local MariaDB and AUTH_DB_TEST=1, including create/read/update/delete, validation and cross-account isolation. Production build passed. The local API returned 401 for anonymous task access. Browser form interactions were not independently exercised in this run.
+
+Verified milestone commit: 0c87aaa9e9c307b9f86462142099cea31ac6fb3a. Next milestone: Day 4, interactive Kanban, search and filters.
