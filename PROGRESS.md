@@ -25,3 +25,9 @@ Added protected task and project lists, details, editable forms, deadlines, prio
 All seven tests passed with local MariaDB and AUTH_DB_TEST=1, including create/read/update/delete, validation and cross-account isolation. Production build passed. The local API returned 401 for anonymous task access. Browser form interactions were not independently exercised in this run.
 
 Verified milestone commit: 0c87aaa9e9c307b9f86462142099cea31ac6fb3a. Next milestone: Day 4, interactive Kanban, search and filters.
+
+## Day 4 · 2026-11-12 · Interactive Kanban
+
+Added a protected three-column dnd-kit board, persistent status updates, title and description search, project and priority filters, and keyboard/mobile status selection. Verified desktop drag and keyboard status changes after reload in Chrome, task creation through the UI, and combined filters at mobile width. Seven automated tests passed against local MariaDB and the production build passed. Physical touch hardware was not tested.
+
+Verified milestone commit: 9bf14dcaf46a03e61e2681048719f3a74e11508f. Next milestone: Day 5, productivity dashboard and analytics.
