@@ -66,3 +66,13 @@ footer a { gap: 4px }
 .work-nav a { display:inline-flex; align-items:center; gap:6px }
 .work-empty { padding:28px 0; display:grid; justify-items:center; gap:12px }
 .work [role=alert] { margin:12px 0; color:#962f2f }
+.board-filters,.board-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}
+.board-column {padding:14px;background:#eaf1f8;border:1px solid #d3deea;border-radius:12px;min-height:180px}
+.board-column.over {outline:2px solid #3d85c6;background:#dcecf8}
+.board-column h2 {font-size:1.2rem;display:flex;justify-content:space-between;margin:0 0 12px}
+.board-column small {font-size:.9rem}
+.board-card {position:relative;padding:14px;margin:10px 0}
+.card-title {display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:650}
+.drag-handle {touch-action:none;cursor:grab;padding:6px}
+.board-card select {margin-top:10px}
+@media(max-width:720px){.board-grid,.board-filters{grid-template-columns:1fr}}

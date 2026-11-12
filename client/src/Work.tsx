@@ -2,16 +2,8 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { FolderKanban, ListTodo } from 'lucide-react'
 
-type Item = { id:number; name?:string; title?:string; description:string|null; projectId?:number|null; status?:string; priority?:string; dueDate?:string|null; createdAt:string; updatedAt:string }
-const statuses = { TODO:'To Do', IN_PROGRESS:'In Progress', DONE:'Done' }
-const priorities = { LOW:'Low', MEDIUM:'Medium', HIGH:'High', URGENT:'Urgent' }
+import { type Item, statuses, priorities, request } from './workApi'
 
-async function request(path:string, method='GET', body?:object) {
-  const res = await fetch('/api/' + path, {method, headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)})
-  if (res.status === 401) { window.location.replace('/login'); throw new Error('Please sign in.') }
-  if (!res.ok) throw new Error((await res.json()).error || 'Request failed.')
-  return res.status === 204 ? null : res.json()
-}
 export function WorkPage({project=false}: {project?:boolean}) {
   const {pathname} = useLocation()
   return <Editor key={pathname} project={project}/>
@@ -54,7 +46,7 @@ function Editor({project}:{project:boolean}) {
     try { await request(path+'/'+id,'DELETE'); navigate('/'+path) }
     catch (e) { setError((e as Error).message); setBusy(false) }
   }
-  return <section className="work"><div className="work-nav"><Link to="/tasks"><ListTodo size={18}/> My tasks</Link><Link to="/projects"><FolderKanban size={18}/> Projects</Link></div>
+  return <section className="work"><div className="work-nav"><Link to="/tasks"><ListTodo size={18}/> My tasks</Link><Link to="/kanban">Kanban</Link><Link to="/projects"><FolderKanban size={18}/> Projects</Link></div>
     <h1>{creating ? 'New '+noun : id ? (item?.title || item?.name || 'Details') : project ? 'Projects' : 'My tasks'}</h1>
     {error && <p role="alert">{error}</p>}
     {!ready ? !error && <p>Loading…</p> : id || creating ? <form onSubmit={save}>
