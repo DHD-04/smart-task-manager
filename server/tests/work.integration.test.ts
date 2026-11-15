@@ -27,6 +27,9 @@ it.skipIf(process.env.AUTH_DB_TEST !== '1')('persists task and project changes a
       await other.patch(path).send(update).expect(404)
       await other.delete(path).expect(404)
     }
+    expect((await owner.get('/api/dashboard/stats?today=2026-11-15')).body).toMatchObject({total:1,completed:1,completion:100})
+    expect((await other.get('/api/dashboard/stats?today=2026-11-15')).body).toMatchObject({total:0,completion:0})
+    await owner.get('/api/dashboard/stats?today=2026-02-31').expect(400)
     expect((await other.get('/api/tasks')).body).toEqual([])
     expect((await other.get('/api/projects')).body).toEqual([])
     for (const data of [{title:' '},{dueDate:'2026-02-31'},{status:'INVALID'},{userId:1}]) {
