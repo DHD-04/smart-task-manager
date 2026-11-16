@@ -1,3 +1,4 @@
+import { WorkNavigation } from './WorkNavigation'
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { FolderKanban, ListTodo } from 'lucide-react'
@@ -46,7 +47,7 @@ function Editor({project}:{project:boolean}) {
     try { await request(path+'/'+id,'DELETE'); navigate('/'+path, {state:{notice:'Changes saved.'}}) }
     catch (e) { setError((e as Error).message); setBusy(false) }
   }
-  return <section className="work"><div className="work-nav"><Link to="/tasks"><ListTodo size={18}/> My tasks</Link><Link to="/kanban">Kanban</Link><Link to="/projects"><FolderKanban size={18}/> Projects</Link></div>
+  return <section className="work"><WorkNavigation/>
     <h1>{creating ? 'New '+noun : id ? (item?.title || item?.name || 'Details') : project ? 'Projects' : 'My tasks'}</h1>
     {state?.notice && <p role="status">{state.notice}</p>}{error && <p role="alert">{error}</p>}
     {!ready ? !error && <p>Loading…</p> : id || creating ? <form onSubmit={save}>

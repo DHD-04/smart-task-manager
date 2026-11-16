@@ -1,3 +1,4 @@
+import { WorkNavigation } from './WorkNavigation'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
@@ -21,7 +22,7 @@ export function Dashboard() {
     request('dashboard/stats?today='+today).then(data=>{if(active)setStats(data)}).catch(e=>{if(active)setError(e.message)})
     return ()=>{active=false}
   },[revision])
-  return <section className="work"><div className="work-nav"><Link to="/tasks">My tasks</Link><Link to="/kanban">Kanban</Link><Link to="/projects">Projects</Link></div><h1>Productivity</h1>
+  return <section className="work"><WorkNavigation/><h1>Productivity</h1>
     <button className="button" onClick={()=>{setError('');setStats(null);setRevision(r=>r+1)}}>Refresh statistics</button>
     {error && <p role="alert">{error}</p>}
     {stats ? <><div className="cards">{[['Total tasks',stats.total],['Completed',stats.completed],['Pending',stats.pending],['Overdue',stats.overdue],['Completion',stats.completion+'%']].map(([label,value])=><article key={label}><h2>{label}</h2><p className="metric">{value}</p></article>)}</div>

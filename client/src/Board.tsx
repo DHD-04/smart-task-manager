@@ -1,3 +1,4 @@
+import { WorkNavigation } from './WorkNavigation'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core'
@@ -67,7 +68,7 @@ export function Board() {
     (!priority || priority===task.priority) &&
     (!project || project===String(task.projectId)) &&
     [task.title,task.description].some(text=>text?.toLowerCase().includes(term)))
-  return <section className="work"><div className="work-nav"><Link to="/tasks">My tasks</Link><Link to="/projects">Projects</Link></div>
+  return <section className="work"><WorkNavigation/>
     <h1>Kanban board</h1><Link className="button" to="/tasks/new">New task</Link>
     <div className="board-filters"><label>Search tasks<input type="search" value={query} onChange={e=>setQuery(e.target.value)}/></label>
       <label>Priority<select aria-label="Priority" value={priority} onChange={e=>setPriority(e.target.value)}><option value="">All priorities</option>{Object.entries(priorities).map(([k,v])=><option key={k} value={k}>{v}</option>)}</select></label>

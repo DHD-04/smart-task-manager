@@ -108,3 +108,8 @@ button:disabled {cursor:wait;opacity:.65}
 .auth-layout h1,.system h1 {overflow-wrap:anywhere}
 @media(max-width:680px){.nav-inner,main,footer{width:92%}.links a{font-size:.8rem}.work,.system{padding:28px 0}.card-title a{overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+.view-switcher {display:inline-flex;gap:5px;padding:5px;margin:0 0 14px;border:1px solid var(--line);background:var(--panel);border-radius:14px;box-shadow:0 2px 5px #101d3506;max-width:100%}
+.view-switcher a {display:flex;align-items:center;justify-content:center;gap:8px;min-height:43px;padding:10px 17px;border-radius:10px;font-size:.9rem;font-weight:600;color:var(--muted);text-decoration:none;transition:background .15s,color .15s}
+.view-switcher a:hover {background:var(--surface);color:var(--ink)}
+.view-switcher a.active {background:var(--surface);color:var(--link);box-shadow:0 2px 6px #101d3512}
+@media(max-width:440px){.view-switcher{display:flex;width:100%}.view-switcher a{flex:1;gap:6px;padding:9px 7px;font-size:.82rem}}
