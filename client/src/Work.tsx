@@ -5,14 +5,14 @@ import { FolderKanban, ListTodo } from 'lucide-react'
 import { type Item, statuses, priorities, request } from './workApi'
 
 export function WorkPage({project=false}: {project?:boolean}) {
-  const {pathname} = useLocation()
+  const {pathname, state} = useLocation()
   return <Editor key={pathname} project={project}/>
 }
 function Editor({project}:{project:boolean}) {
   const path = project ? 'projects' : 'tasks'
   const noun = project ? 'project' : 'task'
   const {id} = useParams()
-  const {pathname} = useLocation()
+  const {pathname, state} = useLocation()
   const navigate = useNavigate()
   const creating = pathname.endsWith('/new')
   const [items,setItems] = useState<Item[]>([])
@@ -37,18 +37,18 @@ function Editor({project}:{project:boolean}) {
     const fields = Object.fromEntries(new FormData(event.currentTarget))
     const body = project ? fields : {...fields, projectId:fields.projectId ? Number(fields.projectId) : null, dueDate:fields.dueDate || null}
     setBusy(true); setError('')
-    try { await request(path + (id ? '/' + id : ''), id ? 'PATCH' : 'POST', body); navigate('/'+path) }
+    try { await request(path + (id ? '/' + id : ''), id ? 'PATCH' : 'POST', body); navigate('/'+path, {state:{notice:'Changes saved.'}}) }
     catch (e) { setError((e as Error).message); setBusy(false) }
   }
   async function remove() {
     if (!window.confirm('Delete “' + (item?.name || item?.title) + '”?')) return
     setBusy(true); setError('')
-    try { await request(path+'/'+id,'DELETE'); navigate('/'+path) }
+    try { await request(path+'/'+id,'DELETE'); navigate('/'+path, {state:{notice:'Changes saved.'}}) }
     catch (e) { setError((e as Error).message); setBusy(false) }
   }
   return <section className="work"><div className="work-nav"><Link to="/tasks"><ListTodo size={18}/> My tasks</Link><Link to="/kanban">Kanban</Link><Link to="/projects"><FolderKanban size={18}/> Projects</Link></div>
     <h1>{creating ? 'New '+noun : id ? (item?.title || item?.name || 'Details') : project ? 'Projects' : 'My tasks'}</h1>
-    {error && <p role="alert">{error}</p>}
+    {state?.notice && <p role="status">{state.notice}</p>}{error && <p role="alert">{error}</p>}
     {!ready ? !error && <p>Loading…</p> : id || creating ? <form onSubmit={save}>
       <label>{project?'Name':'Title'}<input required name={project?'name':'title'} maxLength={project?120:200} defaultValue={item?.name || item?.title}/></label>
       <label>Description<textarea name="description" maxLength={10000} defaultValue={item?.description || ''}/></label>

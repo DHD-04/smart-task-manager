@@ -9,7 +9,7 @@ import { requireSession } from '../middleware/session.js'
 
 api.use('/auth', (req, res, next) => {
   res.set('Cache-Control', 'no-store')
-  if (req.method === 'POST' && (!req.is('application/json') || req.headers['sec-fetch-site'] === 'cross-site')) {
+  if (!['GET', 'HEAD'].includes(req.method) && (!req.is('application/json') || req.headers['sec-fetch-site'] === 'cross-site')) {
     res.status(403).json({ error: 'Authentication requires a same-site JSON request.' })
     return
   }
@@ -24,3 +24,14 @@ api.use('/tasks', workRouter(false))
 api.use('/projects', workRouter(true))
 import { dashboard } from '../controllers/dashboard.js'
 api.get('/dashboard/stats', requireSession, dashboard)
+import { db } from '../db/client.js'
+import { publicFields } from '../middleware/session.js'
+api.patch('/auth/profile', requireSession, async (req,res) => {
+  const name = req.body?.name
+  if (typeof name !== 'string' || !name.trim() || name.trim().length > 100) {
+    res.status(400).json({error:'Enter a name of 1–100 characters.'})
+    return
+  }
+  const user = await db.user.update({where:{id:res.locals.user.id},data:{name:name.trim()},select:publicFields})
+  res.json(user)
+})
