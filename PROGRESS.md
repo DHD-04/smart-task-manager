@@ -39,3 +39,9 @@ Resumed from Day 4. No milestones were recorded for November 13 or 14. Added use
 All nine tests passed, including database-backed account isolation and dashboard totals. Production build passed with a large-bundle warning (690 KB minified). Browser rendering remains unverified in this run.
 
 Verified milestone commit: 414412a315c850ad13de287100cbcb4deb2ae7d3. Remaining milestones are Day 6 UI/UX and Day 7 production deployment. The application has no verified public frontend, API or production database URL. The original schedule ends November 15 and is being stopped as instructed.
+
+## Day 6 · 2026-11-16 · UI and UX
+
+Added persistent light/dark appearance, profile name editing with validation, responsive navigation, accessible feedback and task save notifications. Split dashboard code into an on-demand bundle. Eleven tests passed including React Testing Library and database-backed profile isolation. Chrome verified dashboard rendering, mobile overflow, theme persistence and profile save/reload. Screenshots are in docs/images. Build passed without the prior chunk-size warning. Physical mobile hardware remains untested.
+
+Verified milestone commit: 3d8d3dfb1d484409eaf581b776638859c2e665da. Next milestone: Day 7, production security review, final documentation and deployment. Automatic scheduling ended November 15.
