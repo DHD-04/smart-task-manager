@@ -45,3 +45,17 @@ Verified milestone commit: 414412a315c850ad13de287100cbcb4deb2ae7d3. Remaining m
 Added persistent light/dark appearance, profile name editing with validation, responsive navigation, accessible feedback and task save notifications. Split dashboard code into an on-demand bundle. Eleven tests passed including React Testing Library and database-backed profile isolation. Chrome verified dashboard rendering, mobile overflow, theme persistence and profile save/reload. Screenshots are in docs/images. Build passed without the prior chunk-size warning. Physical mobile hardware remains untested.
 
 Verified milestone commit: 3d8d3dfb1d484409eaf581b776638859c2e665da. Next milestone: Day 7, production security review, final documentation and deployment. Automatic scheduling ended November 15.
+
+## Day 7 · 2026-11-16 · Verified production release
+
+Completed on the user's explicit request after Day 6 on the same date. Modernized My tasks / Kanban / Projects into reusable rounded navigation tabs with Lucide icons, active state and theme support. Prepared Docker hosting, same-origin React/Express delivery, Helmet, authentication rate limiting and production secure cookies.
+
+Railway HTTPS: https://smart-task-manager-production-4de23843.up.railway.app
+API readiness: https://smart-task-manager-production-4de23843.up.railway.app/api/ready
+Separate MySQL service with persistent volume; both migrations applied successfully. Database connection uses Railway private networking. Server logs confirmed port 8080, matching the generated public domain.
+
+Verification: 11 tests passed with AUTH_DB_TEST=1, production build passed, production dependency audit reported zero known vulnerabilities. Live API checks passed for readiness, secure cookie attributes, registration/login/logout, task/project CRUD, persistence across sessions, cross-account isolation and dashboard totals. Public browser registration, task navigation and logout verified. Screenshots saved in docs/images. Two empty API verification accounts and one empty browser verification account remain; credentials were not retained.
+
+Verified release commit on remote main: 0f5fa4d4f967e68b3b2ae439e2b76101d746bc82 (release: deploy smart task manager v1.0). Bilingual README contains setup, features, architecture, real milestone history and limitations.
+
+Limitations: Railway free trial is time/credit limited (30 days or USD 5), no paid subscription enabled. Backup restoration, load testing and physical touch hardware not validated. No password recovery or shared team projects. No portfolio changes. Seven milestones completed across six actual development dates; November 13–14 were missed. No backdated commits. Daily automation ended November 15 and remains stopped. Release complete, with no further daily milestones scheduled.
