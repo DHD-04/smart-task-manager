@@ -15,8 +15,8 @@ NODE_ENV=production and HOST=0.0.0.0 are set by the Dockerfile. PORT is supplied
 
 Les secrets sont configurés dans Railway. Le serveur fait confiance à un proxy inverse. HTTPS est requis pour le cookie sécurisé __Host-stm.
 
-The Railway trial is limited by time and credit. Paid plans require the owner's explicit authorization. Production deployment remains pending until a public URL and database persistence are verified.
-L’essai Railway est limité en durée et crédit. Une offre payante nécessite une autorisation explicite. La livraison reste en attente de vérification de l’URL publique et de la persistance en production.
+The Railway trial is limited by time and credit. Paid plans require the owner's explicit authorization.
+L’essai Railway est limité en durée et crédit. Une offre payante nécessite une autorisation explicite.
 
 ## API
 
@@ -27,3 +27,9 @@ GET and POST /api/tasks and /api/projects. GET, PATCH and DELETE /api/tasks/:id 
 GET /api/dashboard/stats?today=YYYY-MM-DD. The date is the user's local calendar date. The API validates it before calculating overdue tasks.
 
 All task, project, dashboard and profile operations require an HTTP-only session. Authentication attempts are limited to 30 per 15 minutes per client IP.
+
+## Verified release / Livraison vérifiée · 2026-11-16
+
+https://smart-task-manager-production-4de23843.up.railway.app is live. Readiness, registration/login/logout, secure cookies, CRUD, persistence across sessions, account isolation and dashboard totals passed. MySQL migrations applied successfully. Railway forwards the public domain to port 8080 as confirmed in server logs.
+
+Le site HTTPS et MySQL sont opérationnels. Authentification, persistance, CRUD et isolation des comptes vérifiés. Aucun abonnement payant activé.
